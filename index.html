@@ -15,6 +15,7 @@
     .topbar {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       height: 65px;
       background: #ffffff;
       border-bottom: 1px solid #ccc;
@@ -23,8 +24,22 @@
       top: 0;
     }
 
+    .left {
+      display: flex;
+      align-items: center;
+    }
+
     .logo {
       height: 40px;
+    }
+
+    .btn {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      background: #e0e0e0;
+      padding: 8px 12px;
+      border-radius: 6px;
     }
 
     .content {
@@ -43,28 +58,26 @@
       font-weight: bold;
       margin-bottom: 5px;
     }
-
-    .text {
-      color: #333;
-    }
   </style>
 </head>
 
 <body>
 
   <div class="topbar">
-    <img src="logo1.png" class="logo">
+    <div class="left">
+      <img src="logo1.png" class="logo">
+    </div>
+
+    <a href="community.html" class="btn">Community</a>
   </div>
 
   <div class="content">
-
     <div class="post">
       <div class="profile">Yellowblack Studios</div>
-      <div class="text">
+      <div>
         Olá! Eu sou o criador do gitto, Yellowblack, eu queria fazer uma rede social... E agora estou criando o gitto!
       </div>
     </div>
-
   </div>
 
 </body>
