@@ -13,7 +13,7 @@
     }
 
     .topbar {
-      display: none; /* só aparece depois do login */
+      display: none;
       align-items: center;
       justify-content: space-between;
       height: 65px;
@@ -37,7 +37,7 @@
       border-radius: 6px;
     }
 
-    /* Tela de login */
+    /* Login */
     .login {
       display: flex;
       flex-direction: column;
@@ -47,8 +47,22 @@
       text-align: center;
     }
 
+    .login img {
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    .login input {
+      width: 200px;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
     .login button {
-      margin-top: 15px;
+      margin-top: 10px;
       padding: 10px 15px;
       font-size: 16px;
       border: none;
@@ -57,9 +71,8 @@
       border-radius: 6px;
     }
 
-    /* Conteúdo */
     .content {
-      display: none; /* só aparece depois do login */
+      display: none;
       padding: 10px;
     }
 
@@ -80,10 +93,13 @@
 
 <body>
 
-  <!-- Tela de login fake -->
+  <!-- Login -->
   <div class="login" id="login">
-    <h2>Bem-vindo ao Gitto</h2>
-    <p>Faça login ou cadastre-se para continuar</p>
+    <img src="logo1.png">
+
+    <input type="text" placeholder="Nome">
+    <input type="password" placeholder="Senha">
+
     <button onclick="entrar()">Login / Cadastrar</button>
   </div>
 
