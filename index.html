@@ -13,7 +13,7 @@
     }
 
     .topbar {
-      display: flex;
+      display: none; /* só aparece depois do login */
       align-items: center;
       justify-content: space-between;
       height: 65px;
@@ -22,11 +22,6 @@
       padding: 0 15px;
       position: sticky;
       top: 0;
-    }
-
-    .left {
-      display: flex;
-      align-items: center;
     }
 
     .logo {
@@ -42,7 +37,29 @@
       border-radius: 6px;
     }
 
+    /* Tela de login */
+    .login {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .login button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      background: #333;
+      color: white;
+      border-radius: 6px;
+    }
+
+    /* Conteúdo */
     .content {
+      display: none; /* só aparece depois do login */
       padding: 10px;
     }
 
@@ -63,15 +80,21 @@
 
 <body>
 
-  <div class="topbar">
-    <div class="left">
-      <img src="logo1.png" class="logo">
-    </div>
+  <!-- Tela de login fake -->
+  <div class="login" id="login">
+    <h2>Bem-vindo ao Gitto</h2>
+    <p>Faça login ou cadastre-se para continuar</p>
+    <button onclick="entrar()">Login / Cadastrar</button>
+  </div>
 
+  <!-- Topbar -->
+  <div class="topbar" id="topbar">
+    <img src="logo1.png" class="logo">
     <a href="community.html" class="btn">Community</a>
   </div>
 
-  <div class="content">
+  <!-- Conteúdo -->
+  <div class="content" id="content">
     <div class="post">
       <div class="profile">Yellowblack Studios</div>
       <div>
@@ -79,6 +102,14 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function entrar() {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("topbar").style.display = "flex";
+      document.getElementById("content").style.display = "block";
+    }
+  </script>
 
 </body>
 </html>
