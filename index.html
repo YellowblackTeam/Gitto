@@ -15,11 +15,9 @@
       background: #f5f5f5;
     }
 
-    /* Topbar */
     .topbar {
       display: none;
       align-items: center;
-      justify-content: space-between;
       height: 65px;
       background: #ffffff;
       border-bottom: 1px solid #ccc;
@@ -39,7 +37,6 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      text-align: center;
     }
 
     .login img {
@@ -101,7 +98,7 @@
 
     /* Downbar */
     .downbar {
-      display: none; /* NÃO aparece no login */
+      display: none;
       position: fixed;
       bottom: 0;
       width: 100%;
@@ -117,6 +114,7 @@
       color: black;
       text-decoration: none;
       font-size: 12px;
+      cursor: pointer;
     }
 
     .icon-btn i {
@@ -167,9 +165,22 @@
       <i class="material-icons">groups</i>
       Community
     </a>
+
+    <div class="icon-btn" onclick="logout()">
+      <i class="material-icons">logout</i>
+      Logout
+    </div>
   </div>
 
   <script>
+    // Verifica login salvo
+    window.onload = function() {
+      var user = localStorage.getItem("gitto_user");
+      if (user) {
+        liberar();
+      }
+    };
+
     function entrar() {
       var nome = document.getElementById("nome").value;
       var senha = document.getElementById("senha").value;
@@ -177,11 +188,13 @@
       if (nome === "" || senha === "") {
         document.getElementById("erro").style.display = "block";
       } else {
+        localStorage.setItem("gitto_user", nome);
         liberar();
       }
     }
 
     function anonimo() {
+      localStorage.setItem("gitto_user", "Anônimo");
       liberar();
     }
 
@@ -190,6 +203,11 @@
       document.getElementById("topbar").style.display = "flex";
       document.getElementById("content").style.display = "block";
       document.getElementById("downbar").style.display = "flex";
+    }
+
+    function logout() {
+      localStorage.removeItem("gitto_user");
+      location.reload(); // volta pro login
     }
   </script>
 
