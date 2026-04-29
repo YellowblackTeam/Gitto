@@ -32,7 +32,7 @@
 
     .content {
       padding: 10px;
-      padding-bottom: 70px; /* espaço da downbar */
+      padding-bottom: 70px;
     }
 
     .card {
@@ -55,13 +55,30 @@
 
     .title {
       font-weight: bold;
-      font-size: 16px;
     }
 
     .desc {
       font-size: 13px;
       color: #555;
       margin-top: 3px;
+    }
+
+    .join-btn {
+      margin-top: 5px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .entrar {
+      background: green;
+    }
+
+    .sair {
+      background: red;
     }
 
     /* Downbar */
@@ -107,6 +124,7 @@
         <div class="desc">
           Comunidade clássica criada pela primeira vez no Orkut para quem simplesmente não suporta acordar cedo.
         </div>
+        <button class="join-btn entrar" onclick="toggle(this, 'c1')">Entrar</button>
       </div>
     </div>
 
@@ -119,6 +137,7 @@
           Para quem que realmente ama o EXO!<br>
           We Are One Forever!
         </div>
+        <button class="join-btn entrar" onclick="toggle(this, 'c2')">Entrar</button>
       </div>
     </div>
 
@@ -136,6 +155,46 @@
       Community
     </a>
   </div>
+
+  <script>
+    function toggle(btn, id) {
+      var estado = localStorage.getItem(id);
+
+      if (estado === "entrou") {
+        localStorage.removeItem(id);
+        btn.innerText = "Entrar";
+        btn.classList.remove("sair");
+        btn.classList.add("entrar");
+      } else {
+        localStorage.setItem(id, "entrou");
+        btn.innerText = "Sair";
+        btn.classList.remove("entrar");
+        btn.classList.add("sair");
+      }
+    }
+
+    // Carregar estado ao abrir
+    window.onload = function() {
+      var comunidades = ["c1", "c2"];
+
+      for (var i = 0; i < comunidades.length; i++) {
+        var id = comunidades[i];
+        var estado = localStorage.getItem(id);
+
+        if (estado === "entrou") {
+          var btns = document.getElementsByTagName("button");
+
+          for (var j = 0; j < btns.length; j++) {
+            if (btns[j].getAttribute("onclick").includes(id)) {
+              btns[j].innerText = "Sair";
+              btns[j].classList.remove("entrar");
+              btns[j].classList.add("sair");
+            }
+          }
+        }
+      }
+    }
+  </script>
 
 </body>
 </html>
