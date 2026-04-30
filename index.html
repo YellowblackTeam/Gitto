@@ -1,215 +1,141 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gitto</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gitto</title>
 
-  <!-- Material Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-    }
+<style>
+body { margin:0; font-family:Arial; background:#f5f5f5; }
 
-    .topbar {
-      display: none;
-      align-items: center;
-      height: 65px;
-      background: #ffffff;
-      border-bottom: 1px solid #ccc;
-      padding: 0 15px;
-      position: sticky;
-      top: 0;
-    }
+.topbar {
+  display:none; align-items:center; height:65px;
+  background:#fff; border-bottom:1px solid #ccc;
+  padding:0 15px;
+}
 
-    .logo {
-      height: 40px;
-    }
+.logo { height:40px; }
 
-    /* Login */
-    .login {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+.login {
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; height:100vh;
+}
 
-    .login img {
-      height: 80px;
-      margin-bottom: 20px;
-    }
+.login img { height:80px; margin-bottom:20px; }
 
-    .login input {
-      width: 200px;
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
+.login input {
+  width:200px; padding:10px; margin:5px 0;
+  border-radius:6px; border:1px solid #ccc;
+}
 
-    .login button {
-      margin-top: 10px;
-      padding: 10px 15px;
-      border: none;
-      background: #333;
-      color: white;
-      border-radius: 6px;
-    }
+.login button {
+  margin-top:10px; padding:10px;
+  border:none; background:#333; color:#fff;
+  border-radius:6px;
+}
 
-    .anon {
-      margin-top: 8px;
-      font-size: 14px;
-      color: #555;
-      cursor: pointer;
-      text-decoration: underline;
-    }
+.erro { color:red; display:none; }
 
-    .erro {
-      color: red;
-      font-size: 13px;
-      margin-top: 5px;
-      display: none;
-    }
+.anon { margin-top:8px; cursor:pointer; text-decoration:underline; }
 
-    /* Conteúdo */
-    .content {
-      display: none;
-      padding: 10px;
-      padding-bottom: 70px;
-    }
+.content {
+  display:none; padding:10px;
+  padding-bottom:70px;
+}
 
-    .post {
-      background: #ffffff;
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
+.post {
+  background:#fff; padding:12px;
+  border-radius:10px; margin-bottom:10px;
+}
 
-    .profile {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
+.downbar {
+  display:none;
+  position:fixed; bottom:0; width:100%;
+  height:60px; background:#fff;
+  border-top:1px solid #ccc;
+  justify-content:space-around;
+  align-items:center;
+}
 
-    /* Downbar */
-    .downbar {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      height: 60px;
-      background: #ffffff;
-      border-top: 1px solid #ccc;
-      justify-content: space-around;
-      align-items: center;
-    }
+.icon-btn {
+  text-align:center; font-size:12px;
+  text-decoration:none; color:black;
+}
 
-    .icon-btn {
-      text-align: center;
-      color: black;
-      text-decoration: none;
-      font-size: 12px;
-      cursor: pointer;
-    }
-
-    .icon-btn i {
-      display: block;
-      font-size: 24px;
-    }
-  </style>
+.icon-btn i { display:block; font-size:24px; }
+</style>
 </head>
 
 <body>
 
-  <!-- Login -->
-  <div class="login" id="login">
-    <img src="logo1.png">
+<div class="login" id="login">
+  <img src="logo1.png">
+  <input id="nome" placeholder="Nome">
+  <input id="senha" type="password" placeholder="Senha">
+  <button onclick="entrar()">Login</button>
+  <div class="erro" id="erro">Preencha os dados</div>
+  <div class="anon" onclick="anonimo()">Entrar como anônimo</div>
+</div>
 
-    <input type="text" id="nome" placeholder="Nome">
-    <input type="password" id="senha" placeholder="Senha">
+<div class="topbar" id="topbar">
+  <img src="logo1.png" class="logo">
+</div>
 
-    <button onclick="entrar()">Login / Cadastrar</button>
+<div class="post">
+  <div class="profile">Yellowblack Studios</div>
+  <div>
+    Olá! Eu sou o criador do Gitto, Yellowblack. Eu sempre quis fazer uma rede social simples, leve e que funcione em qualquer celular… então decidi criar o Gitto!
+  </div>
+</div>
 
-    <div class="erro" id="erro">Preencha os dados</div>
-    <div class="anon" onclick="anonimo()">Entrar como anônimo</div>
+<div class="downbar" id="downbar">
+  <a href="index.html" class="icon-btn">
+    <i class="material-icons">home</i>Home
+  </a>
+
+  <a href="community.html" class="icon-btn">
+    <i class="material-icons">groups</i>Community
+  </a>
+
+  <div class="icon-btn" onclick="logout()">
+    <i class="material-icons">logout</i>Logout
   </div>
 
-  <!-- Topbar -->
-  <div class="topbar" id="topbar">
-    <img src="logo1.png" class="logo">
-  </div>
+  <a href="#" class="icon-btn">
+    <i class="material-icons">person</i>Profile
+  </a>
+</div>
 
-  <!-- Conteúdo -->
-  <div class="content" id="content">
-    <div class="post">
-      <div class="profile">Yellowblack Studios</div>
-      <div>
-        Olá! Eu sou o criador do gitto, Yellowblack, eu queria fazer uma rede social... E agora estou criando o gitto!
-      </div>
-    </div>
-  </div>
+<script>
+window.onload = function() {
+  if(localStorage.getItem("user")) liberar();
+};
 
-  <!-- Downbar -->
-  <div class="downbar" id="downbar">
-    <a href="index.html" class="icon-btn">
-      <i class="material-icons">home</i>
-      Home
-    </a>
+function entrar() {
+  var n = nome.value, s = senha.value;
+  if(n==""||s=="") erro.style.display="block";
+  else { localStorage.setItem("user", n); liberar(); }
+}
 
-    <a href="community.html" class="icon-btn">
-      <i class="material-icons">groups</i>
-      Community
-    </a>
+function anonimo() {
+  localStorage.setItem("user","Anonimo");
+  liberar();
+}
 
-    <div class="icon-btn" onclick="logout()">
-      <i class="material-icons">logout</i>
-      Logout
-    </div>
-  </div>
+function liberar() {
+  login.style.display="none";
+  topbar.style.display="flex";
+  content.style.display="block";
+  downbar.style.display="flex";
+}
 
-  <script>
-    // Verifica login salvo
-    window.onload = function() {
-      var user = localStorage.getItem("gitto_user");
-      if (user) {
-        liberar();
-      }
-    };
-
-    function entrar() {
-      var nome = document.getElementById("nome").value;
-      var senha = document.getElementById("senha").value;
-
-      if (nome === "" || senha === "") {
-        document.getElementById("erro").style.display = "block";
-      } else {
-        localStorage.setItem("gitto_user", nome);
-        liberar();
-      }
-    }
-
-    function anonimo() {
-      localStorage.setItem("gitto_user", "Anônimo");
-      liberar();
-    }
-
-    function liberar() {
-      document.getElementById("login").style.display = "none";
-      document.getElementById("topbar").style.display = "flex";
-      document.getElementById("content").style.display = "block";
-      document.getElementById("downbar").style.display = "flex";
-    }
-
-    function logout() {
-      localStorage.removeItem("gitto_user");
-      location.reload(); // volta pro login
-    }
-  </script>
+function logout() {
+  localStorage.clear();
+  location.reload();
+}
+</script>
 
 </body>
 </html>
