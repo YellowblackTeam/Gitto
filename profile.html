@@ -3,16 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profile</title>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <style>
-body {
-  margin:0;
-  font-family:Arial;
-  background:#f5f5f5;
-}
+body { margin:0; font-family:Arial; background:#f5f5f5; }
 
 .topbar {
   display:flex;
@@ -58,17 +53,8 @@ body {
   align-items:center;
 }
 
-.icon-btn {
-  text-align:center;
-  font-size:12px;
-  color:black;
-  text-decoration:none;
-}
-
-.icon-btn i {
-  display:block;
-  font-size:24px;
-}
+.icon-btn { text-align:center; font-size:12px; color:black; text-decoration:none; }
+.icon-btn i { display:block; font-size:24px; }
 </style>
 </head>
 
@@ -84,31 +70,16 @@ body {
 </div>
 
 <div class="downbar">
-  <a href="index.html" class="icon-btn">
-    <i class="material-icons">home</i>Home
-  </a>
-
-  <a href="community.html" class="icon-btn">
-    <i class="material-icons">groups</i>Community
-  </a>
-
-  <div class="icon-btn" onclick="logout()">
-    <i class="material-icons">logout</i>Logout
-  </div>
-
-  <a href="profile.html" class="icon-btn">
-    <i class="material-icons">person</i>Profile
-  </a>
+<a href="index.html" class="icon-btn"><i class="material-icons">home</i>Home</a>
+<a href="community.html" class="icon-btn"><i class="material-icons">groups</i>Community</a>
+<div class="icon-btn" onclick="logout()"><i class="material-icons">logout</i>Logout</div>
+<a href="profile.html" class="icon-btn"><i class="material-icons">person</i>Profile</a>
 </div>
 
 <script>
 window.onload = function() {
   var user = localStorage.getItem("user");
-  if(user){
-    document.getElementById("nomeUser").innerText = user;
-  } else {
-    document.getElementById("nomeUser").innerText = "Anônimo";
-  }
+  document.getElementById("nomeUser").innerText = user ? user : "Anônimo";
 };
 
 function logout(){
