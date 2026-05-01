@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community</title>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <style>
-body { margin:0; font-family:Arial; background:#f5f5f5; }
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f5f5;
+}
 
-.topbar {
+.topbar{
   display:flex;
   align-items:center;
   height:65px;
@@ -18,37 +23,61 @@ body { margin:0; font-family:Arial; background:#f5f5f5; }
   padding:0 15px;
 }
 
-.logo { height:40px; }
-
-.content { padding:10px; padding-bottom:70px; }
-
-.card {
-  display:flex;
-  background:#fff;
-  padding:10px;
-  border-radius:10px;
-  margin-bottom:10px;
+.logo{
+  height:40px;
 }
 
-.card img {
+.content{
+  padding:10px;
+  padding-bottom:75px;
+}
+
+.card{
+  display:flex;
+  background:#fff;
+  border-radius:10px;
+  padding:10px;
+  margin-bottom:10px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.1);
+}
+
+.card img{
   width:70px;
   height:70px;
   border-radius:10px;
   margin-right:10px;
+  object-fit:cover;
 }
 
-.join-btn {
-  margin-top:5px;
-  padding:6px;
+.title{
+  font-weight:bold;
+  font-size:16px;
+}
+
+.desc{
+  font-size:13px;
+  color:#555;
+  margin-top:4px;
+}
+
+.join-btn{
+  margin-top:8px;
+  padding:7px 12px;
   border:none;
   border-radius:6px;
   color:#fff;
+  font-size:13px;
 }
 
-.entrar { background:green; }
-.sair { background:red; }
+.entrar{
+  background:green;
+}
 
-.downbar {
+.sair{
+  background:red;
+}
+
+.downbar{
   position:fixed;
   bottom:0;
   width:100%;
@@ -60,8 +89,17 @@ body { margin:0; font-family:Arial; background:#f5f5f5; }
   align-items:center;
 }
 
-.icon-btn { text-align:center; font-size:12px; color:black; text-decoration:none; }
-.icon-btn i { display:block; font-size:24px; }
+.icon-btn{
+  text-align:center;
+  font-size:12px;
+  color:#000;
+  text-decoration:none;
+}
+
+.icon-btn i{
+  display:block;
+  font-size:24px;
+}
 </style>
 </head>
 
@@ -73,49 +111,92 @@ body { margin:0; font-family:Arial; background:#f5f5f5; }
 
 <div class="content">
 
-<div class="card">
-<img src="https://uablo.com/uploads/profile_image/dd9a3062-7cd6-4563-b4ec-a30bd088976d_org.jpg?m=1762444520">
-<div>
-<b>Eu odeio acordar cedo</b>
-<p>Comunidade clássica criada pela primeira vez no Orkut para quem simplesmente não suporta acordar cedo.</p>
-<button class="join-btn entrar" onclick="toggle(this,'c1')">Entrar</button>
-</div>
+  <!-- Comunidade 1 -->
+  <div class="card">
+    <img src="https://uablo.com/uploads/profile_image/dd9a3062-7cd6-4563-b4ec-a30bd088976d_org.jpg?m=1762444520">
+    <div>
+      <div class="title">Eu odeio acordar cedo</div>
+      <div class="desc">
+        Comunidade clássica criada pela primeira vez no Orkut para quem simplesmente não suporta acordar cedo.
+      </div>
+
+      <button id="btnc1" class="join-btn entrar" onclick="toggleComunidade('c1')">
+        Entrar
+      </button>
+    </div>
+  </div>
+
+  <!-- Comunidade 2 -->
+  <div class="card">
+    <img src="https://raw.githubusercontent.com/YellowblackTeam/Gitto/refs/heads/main/IMG-20260428-WA0001.jpg">
+    <div>
+      <div class="title">EXOls</div>
+      <div class="desc">
+        Para quem realmente ama o EXO!<br>
+        We Are One Forever!
+      </div>
+
+      <button id="btnc2" class="join-btn entrar" onclick="toggleComunidade('c2')">
+        Entrar
+      </button>
+    </div>
+  </div>
+
 </div>
 
-<div class="card">
-<img src="https://raw.githubusercontent.com/YellowblackTeam/Gitto/refs/heads/main/IMG-20260428-WA0001.jpg">
-<div>
-<b>EXOls</b>
-<p>Para quem realmente ama o EXO!<br>We Are One Forever!</p>
-<button class="join-btn entrar" onclick="toggle(this,'c2')">Entrar</button>
-</div>
-</div>
-
-</div>
-
+<!-- Downbar -->
 <div class="downbar">
-<a href="index.html" class="icon-btn"><i class="material-icons">home</i>Home</a>
-<a href="community.html" class="icon-btn"><i class="material-icons">groups</i>Community</a>
-<div class="icon-btn" onclick="logout()"><i class="material-icons">logout</i>Logout</div>
-<a href="profile.html" class="icon-btn"><i class="material-icons">person</i>Profile</a>
+  <a href="index.html" class="icon-btn">
+    <i class="material-icons">home</i>Home
+  </a>
+
+  <a href="community.html" class="icon-btn">
+    <i class="material-icons">groups</i>Community
+  </a>
+
+  <div class="icon-btn" onclick="logout()">
+    <i class="material-icons">logout</i>Logout
+  </div>
+
+  <a href="profile.html" class="icon-btn">
+    <i class="material-icons">person</i>Profile
+  </a>
 </div>
 
 <script>
-function toggle(btn,id){
-  if(localStorage.getItem(id)){
-    localStorage.removeItem(id);
-    btn.innerText="Entrar";
-    btn.className="join-btn entrar";
-  } else {
-    localStorage.setItem(id,"1");
-    btn.innerText="Sair";
-    btn.className="join-btn sair";
+function aplicarEstado(id){
+  var btn = document.getElementById("btn" + id);
+  var entrou = localStorage.getItem("gitto_" + id);
+
+  if(entrou === "1"){
+    btn.innerHTML = "Sair";
+    btn.className = "join-btn sair";
+  }else{
+    btn.innerHTML = "Entrar";
+    btn.className = "join-btn entrar";
   }
 }
 
+function toggleComunidade(id){
+  var entrou = localStorage.getItem("gitto_" + id);
+
+  if(entrou === "1"){
+    localStorage.removeItem("gitto_" + id);
+  }else{
+    localStorage.setItem("gitto_" + id, "1");
+  }
+
+  aplicarEstado(id);
+}
+
+window.onload = function(){
+  aplicarEstado("c1");
+  aplicarEstado("c2");
+};
+
 function logout(){
   localStorage.clear();
-  location.href="index.html";
+  location.href = "index.html";
 }
 </script>
 
